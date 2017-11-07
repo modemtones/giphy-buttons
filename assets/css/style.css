@@ -1,0 +1,8 @@
+body {
+    background-image: url("../images/hypnotize.png");
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+button {
+    margin: 5px 5px 5px 5px;
+}
