@@ -1,4 +1,4 @@
-var topics = ["deal with it", "hotline wii", "bill murray", "thumbs up"];
+var topics = ["deal with it", "dance party", "bill murray", "thumbs up", "flynt flossy"];
 
 function displayGifs() {
   var topic = $(this).attr("data-topic");
@@ -14,17 +14,23 @@ function displayGifs() {
     console.log(response);
     var results = response.data;
 
+    $("#gifs-view").html("");
+
     // Looping through each result item
     for (var i = 0; i < results.length; i++) {
       var topicDiv = $("<div>");
+      topicDiv.addClass("card text-white bg-secondary mb-3");
+      var imageDiv = $("<div>");
       var p = $("<p>").text("Rating: " + results[i].rating);
+      p.addClass("text-center");
       var topicImage = $("<img>");
       topicImage.attr("src", results[i].images.fixed_height_still.url);
       topicImage.attr("data-still", results[i].images.fixed_height_still.url);
       topicImage.attr("data-animate", results[i].images.fixed_height.url);
       topicImage.attr("data-state", "still");
-      topicImage.addClass("gif");
-      topicDiv.append(topicImage);
+      topicImage.addClass("gif mx-auto d-block");
+      imageDiv.append(topicImage);
+      topicDiv.append(imageDiv);
       topicDiv.append(p);
       $("#gifs-view").prepend(topicDiv);
     }
